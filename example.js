@@ -97,5 +97,5 @@ ReactDOM.render(
     minLoadTime={250}
     maxLoadTime={1250}
   />,
-document.getElementById('example')
+  document.getElementById('example')
 )

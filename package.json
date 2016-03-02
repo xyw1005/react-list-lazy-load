@@ -1,6 +1,6 @@
 {
   "name": "react-list-lazy-load",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Lazy loading wrapper for react-list.",
   "main": "index.js",
   "scripts": {

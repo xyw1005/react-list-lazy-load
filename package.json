@@ -1,0 +1,30 @@
+{
+  "name": "react-list-lazy-load",
+  "version": "0.0.0",
+  "description": "Lazy loading wrapper for react-list.",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel --out-dir lib src",
+    "test": "standard index.js src/**/*.js",
+    "prepublish": "npm run build"
+  },
+  "keywords": [],
+  "author": "Renée Kooi <renee@kooi.me>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-eslint": "^5.0.0-beta10",
+    "babel-plugin-transform-class-properties": "^6.5.2",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-react": "^6.5.0",
+    "standard": "^6.0.5"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-list": "^0.7.0"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  }
+}

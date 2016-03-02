@@ -11,6 +11,8 @@ npm install --save react-list-lazy-load
 
 ## Usage
 
+[Demo](https://u-wave.github.com/react-list-lazy-load) - [Demo source code](./example.js)
+
 React List Lazy Load is a higher order component, so you wrap it around a
 `<ReactList />` element to :sparkles: magically :sparkles: add lazy loading
 hooks.

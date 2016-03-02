@@ -133,7 +133,7 @@ export default class LazyList extends Component {
     }
 
     topItem = Math.max(topItem - loadMargin, 0)
-    bottomItem = Math.min(bottomItem + loadMargin, length - 1)
+    bottomItem = Math.min(bottomItem + loadMargin, length)
 
     const almostVisibleItems = eagerSlice(items, topItem, bottomItem)
 

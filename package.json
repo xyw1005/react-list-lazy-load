@@ -1,6 +1,6 @@
 {
   "name": "react-list-lazy-load",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lazy loading wrapper for react-list.",
   "main": "index.js",
   "repository": "u-wave/react-list-lazy-load",

@@ -1,4 +1,5 @@
-import { cloneElement, Component, PropTypes } from 'react'
+import { cloneElement, Component } from 'react'
+import PropTypes from 'prop-types'
 
 const proxyMethods = [
   'getOffset',

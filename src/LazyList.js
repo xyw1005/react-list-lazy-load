@@ -1,4 +1,4 @@
-import { cloneElement, Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 const proxyMethods = [
@@ -43,36 +43,7 @@ function eagerSlice (list, start, end) {
 /**
  * Adds simple lazy loading to react-list.
  */
-export default class LazyList extends Component {
-  static propTypes = {
-    /**
-     * Total amount of items, on all pages.
-     */
-    length: PropTypes.number.isRequired,
-    /**
-     * Items per page.
-     */
-    pageSize: PropTypes.number,
-    /**
-     * When to begin loading the next page.
-     */
-    loadMargin: PropTypes.number,
-    /**
-     * Loaded items. NULLs in this array indicate unloaded items.
-     */
-    items: PropTypes.array,
-
-    /**
-     * Callback to begin loading a page.
-     */
-    onRequestPage: PropTypes.func.isRequired
-  }
-
-  static defaultProps = {
-    pageSize: 25,
-    loadMargin: 5
-  }
-
+class LazyList extends React.Component {
   constructor (props) {
     super(props)
 
@@ -159,7 +130,7 @@ export default class LazyList extends Component {
   }
 
   render () {
-    return cloneElement(this.props.children, {
+    return React.cloneElement(this.props.children, {
       ref: (list) => {
         this._list = list
       }
@@ -167,8 +138,41 @@ export default class LazyList extends Component {
   }
 }
 
+if (process.env.NODE_ENV !== 'production') {
+  LazyList.propTypes = {
+    /**
+     * Total amount of items, on all pages.
+     */
+    length: PropTypes.number.isRequired,
+    /**
+     * Items per page.
+     */
+    pageSize: PropTypes.number,
+    /**
+     * When to begin loading the next page.
+     */
+    loadMargin: PropTypes.number,
+    /**
+     * Loaded items. NULLs in this array indicate unloaded items.
+     */
+    items: PropTypes.array,
+
+    /**
+     * Callback to begin loading a page.
+     */
+    onRequestPage: PropTypes.func.isRequired
+  }
+}
+
+LazyList.defaultProps = {
+  pageSize: 25,
+  loadMargin: 5
+}
+
 proxyMethods.forEach((name) => {
   LazyList.prototype[name] = function (...args) {
     return this.getList()[name](...args)
   }
 })
+
+export default LazyList

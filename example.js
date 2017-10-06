@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 // LazyList wraps around ReactList--so we need both!
 import LazyList from 'react-list-lazy-load'
 import ReactList from 'react-list'
@@ -24,16 +25,14 @@ function mergePage (items, newItems, offset) {
   return merged
 }
 
-class App extends Component {
-  static propTypes = {
-    pageSize: PropTypes.number.isRequired,
-    totalItems: PropTypes.number.isRequired,
-    minLoadTime: PropTypes.number.isRequired,
-    maxLoadTime: PropTypes.number.isRequired
-  }
+class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      items: array(25, (i) => `item #${i}`)
+    }
 
-  state = {
-    items: array(25, (i) => `item #${i}`)
+    this.handleRequestPage = this.handleRequestPage.bind(this)
   }
 
   // Simulate a network request for `limit` items
@@ -47,7 +46,7 @@ class App extends Component {
     }, randBetween(minLoadTime, maxLoadTime))
   }
 
-  handleRequestPage = (page, cb) => {
+  handleRequestPage (page, cb) {
     const { pageSize } = this.props
 
     // Simulate a network request or other async operation
@@ -88,6 +87,13 @@ class App extends Component {
       </LazyList>
     )
   }
+}
+
+App.propTypes = {
+  pageSize: PropTypes.number.isRequired,
+  totalItems: PropTypes.number.isRequired,
+  minLoadTime: PropTypes.number.isRequired,
+  maxLoadTime: PropTypes.number.isRequired
 }
 
 ReactDOM.render(

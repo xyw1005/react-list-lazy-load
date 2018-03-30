@@ -8,8 +8,8 @@
   "scripts": {
     "build": "npm run build:es && npm run build:lib",
     "build:es": "babel --out-dir es src",
-    "build:lib": "babel --out-dir lib es --no-babelrc --plugins transform-es2015-modules-commonjs",
-    "example": "babel --plugins transform-es2015-modules-commonjs example.js | browserify - --debug -r ./:react-list-lazy-load -o example.build.js",
+    "build:lib": "babel --out-dir lib es --no-babelrc --plugins @babel/transform-modules-commonjs",
+    "example": "babel --plugins @babel/transform-modules-commonjs example.js | browserify - --debug -r ./:react-list-lazy-load -o example.build.js",
     "test": "standard index.js example.js src/**/*.js",
     "prepublish": "npm run build"
   },
@@ -20,17 +20,17 @@
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
-    "babel-cli": "^7.0.0-beta.2",
-    "babel-core": "^7.0.0-beta.2",
+    "@babel/cli": "^7.0.0-beta.42",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/preset-react": "^7.0.0-beta.42",
     "babel-eslint": "^8.0.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^7.0.0-beta.2",
-    "babel-preset-es2015": "^7.0.0-beta.2",
-    "babel-preset-react": "^7.0.0-beta.2",
-    "browserify": "^14.4.0",
+    "browserify": "^16.1.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-list": "^0.8.8",
-    "standard": "^10.0.3"
+    "standard": "^11.0.1"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
